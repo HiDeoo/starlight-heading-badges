@@ -1,1 +1,1 @@
-# starlight-toc-badges
+packages/starlight-heading-badges/README.md
