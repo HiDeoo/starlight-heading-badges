@@ -1,11 +1,13 @@
 import type { StarlightPlugin } from '@astrojs/starlight/types'
 
+import { starlightHeadingBadgesIntegration } from './libs/integration'
+
 export default function starlightHeadingBadgesPlugin(): StarlightPlugin {
   return {
     name: 'starlight-heading-badges-plugin',
     hooks: {
-      setup() {
-        console.error('Hello from starlight-heading-badges-plugin!')
+      setup({ addIntegration }) {
+        addIntegration(starlightHeadingBadgesIntegration())
       },
     },
   }

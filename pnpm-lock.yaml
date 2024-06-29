@@ -42,11 +42,11 @@ importers:
   docs:
     dependencies:
       '@astrojs/starlight':
-        specifier: ^0.24.4
-        version: 0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
+        specifier: ^0.24.5
+        version: 0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
       '@hideoo/starlight-plugins-docs-components':
         specifier: ^0.2.2
-        version: 0.2.2(@astrojs/starlight@0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
+        version: 0.2.2(@astrojs/starlight@0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
       astro:
         specifier: ^4.11.2
         version: 4.11.2(@types/node@17.0.45)(typescript@5.5.2)
@@ -60,8 +60,18 @@ importers:
   packages/starlight-heading-badges:
     dependencies:
       '@astrojs/starlight':
-        specifier: '>=0.24.0'
-        version: 0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
+        specifier: '>=0.24.5'
+        version: 0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
+    devDependencies:
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
+      mdast-util-directive:
+        specifier: ^3.0.0
+        version: 3.0.0
 
 packages:
 
@@ -107,8 +117,8 @@ packages:
   '@astrojs/sitemap@3.1.6':
     resolution: {integrity: sha512-1Qp2NvAzVImqA6y+LubKi1DVhve/hXXgFvB0szxiipzh7BvtuKe4oJJ9dXSqaubaTkt4nMa6dv6RCCAYeB6xaQ==}
 
-  '@astrojs/starlight@0.24.4':
-    resolution: {integrity: sha512-rED8LPQwsXlgclfdHO+okUGcirof1prrxZLuKWp380xC/T7u2qQ5b1gnKqpM+92x+vhs8GYT7mHGKz9VctwdUg==}
+  '@astrojs/starlight@0.24.5':
+    resolution: {integrity: sha512-DDI8NpLzk+ReBudhAV09OhO5DxD+KN4Nnp3YlG6kwn/F8fmywNTNgY7VW67Z8aad+A/85OOiQOtq9wIFNRy3YA==}
     peerDependencies:
       astro: ^4.8.6
 
@@ -3305,7 +3315,7 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/starlight@0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))':
+  '@astrojs/starlight@0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))':
     dependencies:
       '@astrojs/mdx': 3.1.2(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
       '@astrojs/sitemap': 3.1.6
@@ -3653,11 +3663,11 @@ snapshots:
 
   '@hideoo/prettier-config@2.0.0': {}
 
-  '@hideoo/starlight-plugins-docs-components@0.2.2(@astrojs/starlight@0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))':
+  '@hideoo/starlight-plugins-docs-components@0.2.2(@astrojs/starlight@0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))':
     dependencies:
-      '@astrojs/starlight': 0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
-      starlight-package-managers: 0.6.0(@astrojs/starlight@0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
-      starlight-showcases: 0.1.2(@astrojs/starlight@0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
+      '@astrojs/starlight': 0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
+      starlight-package-managers: 0.6.0(@astrojs/starlight@0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
+      starlight-showcases: 0.1.2(@astrojs/starlight@0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
     transitivePeerDependencies:
       - astro
 
@@ -6830,16 +6840,16 @@ snapshots:
 
   sprintf-js@1.0.3: {}
 
-  starlight-package-managers@0.6.0(@astrojs/starlight@0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)):
+  starlight-package-managers@0.6.0(@astrojs/starlight@0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)):
     dependencies:
-      '@astrojs/starlight': 0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
+      '@astrojs/starlight': 0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
       astro: 4.11.2(@types/node@17.0.45)(typescript@5.5.2)
 
-  starlight-showcases@0.1.2(@astrojs/starlight@0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)):
+  starlight-showcases@0.1.2(@astrojs/starlight@0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)))(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2)):
     dependencies:
       '@astro-community/astro-embed-twitter': 0.5.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
       '@astro-community/astro-embed-youtube': 0.5.2(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
-      '@astrojs/starlight': 0.24.4(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
+      '@astrojs/starlight': 0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))
     transitivePeerDependencies:
       - astro
 

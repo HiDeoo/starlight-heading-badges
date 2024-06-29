@@ -12,8 +12,15 @@
   "scripts": {
     "lint": "prettier -c --cache . && eslint . --cache --max-warnings=0"
   },
+  "dependencies": {
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "mdast-util-directive": "^3.0.0"
+  },
   "peerDependencies": {
-    "@astrojs/starlight": ">=0.24.0"
+    "@astrojs/starlight": ">=0.24.5"
   },
   "engines": {
     "node": ">=18"
