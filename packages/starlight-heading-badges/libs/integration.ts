@@ -1,5 +1,6 @@
 import type { AstroIntegration } from 'astro'
 
+import { rehypeStarlightHeadingBadges } from './rehype'
 import { remarkStarlightHeadingBadges } from './remark'
 
 export function starlightHeadingBadgesIntegration(): AstroIntegration {
@@ -9,6 +10,7 @@ export function starlightHeadingBadgesIntegration(): AstroIntegration {
       'astro:config:setup': ({ updateConfig }) => {
         updateConfig({
           markdown: {
+            rehypePlugins: [rehypeStarlightHeadingBadges],
             remarkPlugins: [remarkStarlightHeadingBadges],
           },
         })
