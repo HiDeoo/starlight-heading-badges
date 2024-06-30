@@ -25,7 +25,7 @@ const { toc, isMobile = false, depth = 0 } = Astro.props
   {
     toc.map((heading) => (
       <li>
-        <a href={`#${heading.slug}`}>
+        <a href={`#${heading.slug}`} data-shb-heading={heading.text}>
           <TableOfContentHeading text={heading.text} />
         </a>
         {heading.children.length > 0 && <Astro.self toc={heading.children} depth={depth + 1} isMobile={isMobile} />}

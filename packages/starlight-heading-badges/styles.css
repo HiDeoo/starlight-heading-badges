@@ -1,3 +1,4 @@
-span[data-heading-badge] {
+span[data-shb-badge] {
   background-color: red;
+  display: inline-block;
 }

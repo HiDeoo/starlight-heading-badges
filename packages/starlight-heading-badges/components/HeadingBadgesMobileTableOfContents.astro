@@ -114,13 +114,31 @@ const { labels, toc } = Astro.props
 </style>
 
 <script>
+  import { deserializeBadge } from '../libs/badge'
   import { StarlightTOC } from '../libs/starlight-toc'
 
   class MobileStarlightTOC extends StarlightTOC {
     override set current(link: HTMLAnchorElement) {
       super.current = link
       const display = this.querySelector('.display-current') as HTMLSpanElement
-      if (display) display.textContent = link.textContent
+      if (display) {
+        const heading = link.dataset['shbHeading']
+        if (heading) {
+          const badge = deserializeBadge(heading)
+          if (badge) {
+            display.textContent = ''
+            display.append(document.createTextNode(`${badge.heading} `))
+            const span = document.createElement('span')
+            span.textContent = badge.text
+            span.dataset['shbBadge'] = ''
+            span.dataset['shbBadgeVariant'] = badge.variant
+            display.append(span)
+
+            return
+          }
+        }
+        display.textContent = link.textContent
+      }
     }
 
     override get current(): HTMLAnchorElement | null {
