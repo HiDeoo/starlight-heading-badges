@@ -3,17 +3,26 @@ import 'mdast-util-directive'
 import type { Root } from 'mdast'
 import { CONTINUE, SKIP, visit } from 'unist-util-visit'
 
+import { BadgeDirectiveName, isBadgeVariant, serializeBadge, type Variant } from './badge'
+
 export function remarkStarlightHeadingBadges() {
   return function transformer(tree: Root) {
     visit(tree, (node, index, parent) => {
-      if (node.type !== 'textDirective') return CONTINUE
+      if (node.type !== 'textDirective' || node.name !== BadgeDirectiveName) return CONTINUE
       if (!parent || typeof index !== 'number' || parent.type !== 'heading') return CONTINUE
 
-      // TODO(HiDeoo) only tag directive
-      if (node.name !== 'abbr') return CONTINUE
+      const contentNode = node.children[0]
+      if (!contentNode || contentNode.type !== 'text' || contentNode.value.length === 0) return CONTINUE
 
-      // TODO(HiDeoo) can we make the variant optional in the directive syntax?
-      // TODO(HiDeoo) error on invalid variant
+      let variant: Variant = 'default'
+
+      if (node.attributes?.['variant']) {
+        if (isBadgeVariant(node.attributes['variant'])) {
+          variant = node.attributes['variant']
+        } else {
+          return CONTINUE
+        }
+      }
 
       let headingText = ''
 
@@ -31,10 +40,11 @@ export function remarkStarlightHeadingBadges() {
       // TODO(HiDeoo) slug
       parent.data.hProperties['id'] = headingText
 
-      // TODO(HiDeoo) identifier with directive data + values
       // TODO(HiDeoo) Always insert badge at the end
-      // TODO(HiDeoo) handle spaces
-      parent.children.splice(index, 1, { type: 'html', value: '<span data-heading-badge>__IDENTIFIER__</span>' })
+      parent.children.splice(index, 1, {
+        type: 'html',
+        value: `<span data-heading-badge>${serializeBadge(variant, contentNode.value)}</span>`,
+      })
 
       return SKIP
     })

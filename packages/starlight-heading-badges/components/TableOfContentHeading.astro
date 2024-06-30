@@ -1,0 +1,24 @@
+---
+import { deserializeBadge } from '../libs/badge'
+
+interface Props {
+  text: string
+}
+
+const { text } = Astro.props
+
+const badge = deserializeBadge(text)
+---
+
+{
+  badge ? (
+    <>
+      <span>{badge.heading}</span>
+      <span>
+        [{badge.text} - {badge.variant}]
+      </span>
+    </>
+  ) : (
+    <span>{text}</span>
+  )
+}

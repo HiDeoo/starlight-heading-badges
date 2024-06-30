@@ -59,6 +59,9 @@ importers:
 
   packages/starlight-heading-badges:
     dependencies:
+      '@astrojs/markdown-remark':
+        specifier: ^5.1.1
+        version: 5.1.1
       '@astrojs/starlight':
         specifier: '>=0.24.5'
         version: 0.24.5(astro@4.11.2(@types/node@17.0.45)(typescript@5.5.2))

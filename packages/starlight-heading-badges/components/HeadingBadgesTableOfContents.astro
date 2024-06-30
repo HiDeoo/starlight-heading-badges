@@ -1,0 +1,25 @@
+---
+/**
+ * A copy of the Starlight `<TableOfContents>` component with support for badges.
+ * @see https://github.com/withastro/starlight/blob/1d32c8b0cec0ea5f66351b21b91748dfa78b404b/packages/starlight/components/TableOfContents.astro
+ */
+
+import type { Props } from '@astrojs/starlight/props'
+
+import TableOfContentsList from './TableOfContentsList.astro'
+
+const { labels, toc } = Astro.props
+---
+
+{
+  toc && (
+    <starlight-toc data-min-h={toc.minHeadingLevel} data-max-h={toc.maxHeadingLevel}>
+      <nav aria-labelledby="starlight__on-this-page">
+        <h2 id="starlight__on-this-page">{labels['tableOfContents.onThisPage']}</h2>
+        <TableOfContentsList toc={toc.items} />
+      </nav>
+    </starlight-toc>
+  )
+}
+
+<script src="../libs/starlight-toc"></script>
