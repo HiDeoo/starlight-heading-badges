@@ -49,8 +49,11 @@ export function remarkStarlightHeadingBadges() {
         }
       }
 
-      // TODO(HiDeoo) Always insert badge at the end
-      parent.children.splice(index, 1, {
+      if (parent.children.length !== index + 1) {
+        parent.children.splice(parent.children.length, 0, { type: 'text', value: ' ' })
+      }
+      parent.children.splice(index, 1)
+      parent.children.splice(parent.children.length, 0, {
         type: 'html',
         value: `<span data-shb-badge>${serializeBadge(variant, contentNode.value)}</span>`,
       })
