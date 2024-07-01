@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^5.1.1",
+    "github-slugger": "^2.0.0",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
