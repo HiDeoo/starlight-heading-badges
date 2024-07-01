@@ -16,6 +16,7 @@ export default defineConfig({
           label: 'Start Here',
           items: [{ label: 'Getting Started', link: '/getting-started/' }],
         },
+        { label: 'Demo', link: '/demo/' },
       ],
       social: {
         github: 'https://github.com/HiDeoo/starlight-heading-badges',
