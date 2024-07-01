@@ -1,30 +1,60 @@
 ---
-title: // TODO(HiDeoo)
-description: // TODO(HiDeoo)
+title: Getting Started
+description: Learn how to use the Starlight Heading Badges plugin in your Starlight documentation.
 ---
 
-Hello
+A [Starlight](https://starlight.astro.build) plugin to easily add [badges](https://starlight.astro.build/guides/components/#badges) to your Markdown and MDX headings that are also visible in the table of contents.
+Check out the [demo](/demo/) for a preview of the plugin in action.
 
-# Heading 1
+## Prerequisites
 
-test
+You will need to have a Starlight website set up.
+If you don't have one yet, you can follow the ["Getting Started"](https://starlight.astro.build/getting-started) guide in the Starlight docs to create one.
 
-## Heading 2 :abbr[HTML]{title="HyperText Markup Language"}
+## Installation
 
-test
+import { Steps } from '@astrojs/starlight/components'
+import { PackageManagers } from '@hideoo/starlight-plugins-docs-components'
 
-### Heading 3
+<Steps>
 
-test
+1. Starlight Heading Badges is a Starlight [plugin](https://starlight.astro.build/reference/plugins/) that you can install using your favorite package manager:
 
-#### Heading 4
+   <PackageManagers pkg="starlight-heading-badges" />
 
-test
+2. Configure the plugin in your Starlight [configuration](https://starlight.astro.build/reference/configuration/#plugins) in the `astro.config.mjs` file.
 
-##### Heading 5
+   ```diff lang="js"
+   // astro.config.mjs
+   import starlight from '@astrojs/starlight'
+   import { defineConfig } from 'astro/config'
+   +import starlightHeadingBadges from 'starlight-heading-badges'
 
-test
+   export default defineConfig({
+     integrations: [
+       starlight({
+   +      plugins: [starlightHeadingBadges()],
+         title: 'My Docs',
+       }),
+     ],
+   })
+   ```
 
-###### Heading 6
+3. Add a badge to a heading in one of your Markdown or MDX files:
 
-test
+   ```mdx
+   ---
+   // src/content/docs/example.mdx
+   title: My docs
+   ---
+
+   ## Hello :badge[New]
+
+   Welcome to my project!
+   ```
+
+4. [Start the development server](https://starlight.astro.build/getting-started/#start-the-development-server) to see the plugin in action.
+
+</Steps>
+
+Check out the [“Usage”](/usage/) guide to learn more about how to use the plugin.
