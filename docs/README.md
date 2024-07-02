@@ -1,11 +1,6 @@
 <div align="center">
   <h1>starlight-heading-badges 🔖</h1>
   <p>Starlight plugin to add badges to your Markdown and MDX headings.</p>
-  <p>
-    <a href="https://i.imgur.com/jVkJd9U.png" title="Screenshot of the Starlight Heading Badges plugin">
-      <img alt="Screenshot of the Starlight Heading Badges plugin" src="https://i.imgur.com/jVkJd9U.png" width="520" />
-    </a>
-  </p>
 </div>
 
 <div align="center">
@@ -18,9 +13,13 @@
   <br />
 </div>
 
-## Getting Started
+## Example
 
-Want to get started immediately? Check out the [getting started guide](https://starlight-heading-badges.vercel.app/getting-started/) or check out the [demo](https://starlight-heading-badges.vercel.app/demo/) to see the theme in action.
+Run the docs locally using [pnpm](https://pnpm.io):
+
+```shell
+pnpm run dev
+```
 
 ## License
 
