@@ -1,0 +1,60 @@
+span[data-shb-badge] {
+  background-color: var(--sl-color-bg-badge);
+  border: 1px solid var(--sl-color-border-badge);
+  border-radius: 0.25rem;
+  color: var(--sl-color-text-badge);
+  display: inline-block;
+  font-family: var(--sl-font-system-mono);
+  font-size: var(--sl-text-sm);
+  line-height: normal;
+  overflow-wrap: anywhere;
+  padding: 0.175rem 0.35rem;
+  vertical-align: middle;
+}
+
+:is(h5, h6) span[data-shb-badge] {
+  font-size: var(--sl-text-xs);
+  padding: 0.0625rem 0.25rem;
+}
+
+mobile-starlight-toc span[data-shb-badge] {
+  font-size: 0.75rem;
+  margin-inline-start: 1ch;
+  padding: 0.0625rem 0.25rem;
+}
+
+span[data-shb-badge-variant='default'] {
+  --sl-color-bg-badge: var(--sl-badge-default-bg);
+  --sl-color-border-badge: var(--sl-badge-default-border);
+  --sl-color-text-badge: var(--sl-badge-default-text);
+}
+
+span[data-shb-badge-variant='note'] {
+  --sl-color-bg-badge: var(--sl-badge-note-bg);
+  --sl-color-border-badge: var(--sl-badge-note-border);
+  --sl-color-text-badge: var(--sl-badge-note-text);
+}
+
+span[data-shb-badge-variant='danger'] {
+  --sl-color-bg-badge: var(--sl-badge-danger-bg);
+  --sl-color-border-badge: var(--sl-badge-danger-border);
+  --sl-color-text-badge: var(--sl-badge-danger-text);
+}
+
+span[data-shb-badge-variant='success'] {
+  --sl-color-bg-badge: var(--sl-badge-success-bg);
+  --sl-color-border-badge: var(--sl-badge-success-border);
+  --sl-color-text-badge: var(--sl-badge-success-text);
+}
+
+span[data-shb-badge-variant='tip'] {
+  --sl-color-bg-badge: var(--sl-badge-tip-bg);
+  --sl-color-border-badge: var(--sl-badge-tip-border);
+  --sl-color-text-badge: var(--sl-badge-tip-text);
+}
+
+span[data-shb-badge-variant='caution'] {
+  --sl-color-bg-badge: var(--sl-badge-caution-bg);
+  --sl-color-border-badge: var(--sl-badge-caution-border);
+  --sl-color-text-badge: var(--sl-badge-caution-text);
+}

@@ -1,0 +1,66 @@
+---
+title: Usage
+description: Learn all the possible ways to use the Starlight Heading Badges plugin in your Starlight documentation.
+---
+
+The Starlight Heading Badges plugin provides a custom Markdown syntax to add badges to your headings in Markdown and MDX files.
+
+## Add a badge
+
+Badges are indicated using the colon `:` character followed by the `badge` keyword and the badge content in square brackets `[]`.
+By default, the badge will use the theme accent color of your site.
+
+The following example will render a "New" badge using the default theme accent color:
+
+```mdx
+---
+// src/content/docs/example.md
+title: My docs
+---
+
+### Example :badge[New]
+
+Welcome to my project!
+```
+
+The code above generates the following tabs on the page:
+
+import Example from '../../components/Example.astro'
+
+<Example>
+
+### Example :badge[New]
+
+Welcome to my project!
+
+</Example>
+
+## Customize the badge
+
+Heading badges support built-in badge variants to customize the appearance of the badge.
+
+To specify a variant, add the variant name after the badge content in curly braces `{}` with the `variant` keyword and the variant name.
+The accepted variants are available: `note` (blue), `tip` (purple), `danger` (red), `caution` (orange), or `success` (green).
+
+The following example will render a "POST" badge with a green background:
+
+```mdx
+---
+// src/content/docs/example.md
+title: My docs
+---
+
+### Example :badge[POST]{variant=success}
+
+Welcome to my project!
+```
+
+The code above generates the following tabs on the page:
+
+<Example>
+
+### Example :badge[POST]{variant=success}
+
+Welcome to my project!
+
+</Example>

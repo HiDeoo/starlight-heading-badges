@@ -1,0 +1,31 @@
+---
+import { Badge } from '@astrojs/starlight/components'
+
+import { deserializeBadge } from '../libs/badge'
+
+interface Props {
+  text: string
+}
+
+const { text } = Astro.props
+
+const badge = deserializeBadge(text)
+---
+
+{
+  badge ? (
+    <span class="shb-heading">
+      {badge.heading.trim()}&nbsp;
+      <Badge size="small" text={badge.text} variant={badge.variant} />
+    </span>
+  ) : (
+    <span>{text}</span>
+  )
+}
+
+<style>
+  .shb-heading .sl-badge {
+    font-size: 0.75rem;
+    padding: 0.0625rem 0.25rem;
+  }
+</style>
