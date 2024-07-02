@@ -15,7 +15,7 @@ const badge = deserializeBadge(text)
 {
   badge ? (
     <span class="shb-heading">
-      {badge.heading}&nbsp;
+      {badge.heading.trim()}&nbsp;
       <Badge size="small" text={badge.text} variant={badge.variant} />
     </span>
   ) : (

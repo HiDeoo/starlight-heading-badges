@@ -54,8 +54,8 @@ export function remarkStarlightHeadingBadges() {
       }
       parent.children.splice(index, 1)
       parent.children.splice(parent.children.length, 0, {
-        type: 'html',
-        value: `<span data-shb-badge>${serializeBadge(variant, contentNode.value)}</span>`,
+        type: 'text',
+        value: serializeBadge(variant, contentNode.value),
       })
 
       return SKIP

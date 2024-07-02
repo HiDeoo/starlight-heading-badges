@@ -1,17 +1,21 @@
 import { test as base } from '@playwright/test'
 
-import { DemoPage } from './fixtures/DemoPage'
+import { TestPage } from './fixtures/TestPage'
 
 export { expect } from '@playwright/test'
 
-export const test = base.extend<Fixtures>({
-  demoPage: async ({ page }, use) => {
-    const demoPage = new DemoPage(page)
+export const TestTypes = ['md', 'mdx'] as const
 
-    await use(demoPage)
+export const test = base.extend<Fixtures>({
+  testPage: async ({ page }, use) => {
+    const testPage = new TestPage(page)
+
+    await use(testPage)
   },
 })
 
 interface Fixtures {
-  demoPage: DemoPage
+  testPage: TestPage
 }
+
+export type TestType = (typeof TestTypes)[number]

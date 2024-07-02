@@ -1,31 +1,47 @@
-import { expect, test } from './test'
+import { TestTypes, expect, test } from './test'
 
-test('generates IDs for all headings', async ({ demoPage }) => {
-  await demoPage.goto()
+for (const testType of TestTypes) {
+  test(`generates IDs for all headings (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
 
-  for (const [headingText, expectedId] of Object.entries(demoPage.expectedHeadingIds)) {
-    expect(await demoPage.page.getByRole('heading', { name: headingText }).getAttribute('id')).toBe(expectedId)
-  }
-})
+    for (const [index, { text, id }] of testPage.expectedHeadings.entries()) {
+      const heading = testPage.page.locator('.sl-markdown-content').getByRole('heading').nth(index)
 
-test('adds a heading badge with the default variant', async ({ demoPage }) => {
-  await demoPage.goto()
+      expect(await heading.textContent()).toMatch(text)
+      expect(await heading.getAttribute('id')).toBe(id)
+    }
+  })
 
-  const headingBadge = demoPage.page
-    .getByRole('heading', { name: 'Erat feram' })
-    .locator('span[data-shb-badge-variant=default]')
+  test(`adds a heading badge with the default variant (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
 
-  await expect(headingBadge).toBeVisible()
-  await expect(headingBadge).toHaveText('New')
-})
+    const headingBadge = testPage.page
+      .getByRole('heading', { name: 'Default badge' })
+      .locator('span[data-shb-badge-variant=default]')
 
-test('adds a heading badge with a specified variant', async ({ demoPage }) => {
-  await demoPage.goto()
+    await expect(headingBadge).toBeVisible()
+    await expect(headingBadge).toHaveText('New')
+  })
 
-  const headingBadge = demoPage.page
-    .getByRole('heading', { name: 'Alta utque' })
-    .locator('span[data-shb-badge-variant=success]')
+  test(`adds a heading badge with a specified variant (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
 
-  await expect(headingBadge).toBeVisible()
-  await expect(headingBadge).toHaveText('POST')
-})
+    const headingBadge = testPage.page
+      .getByRole('heading', { name: 'Variant Badge' })
+      .locator('span[data-shb-badge-variant=caution]')
+
+    await expect(headingBadge).toBeVisible()
+    await expect(headingBadge).toHaveText('v1.0')
+  })
+
+  test(`adds a heading badge to non-ToC headings (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
+
+    const headingBadge = testPage.page
+      .getByRole('heading', { name: 'Non-ToC' })
+      .locator('span[data-shb-badge-variant=success]')
+
+    await expect(headingBadge).toBeVisible()
+    await expect(headingBadge).toHaveText('POST')
+  })
+}
