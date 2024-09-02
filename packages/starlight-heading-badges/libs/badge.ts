@@ -3,13 +3,20 @@ export const BadgeDirectiveName = 'badge'
 const variants = ['caution', 'danger', 'default', 'note', 'success', 'tip'] as const
 
 const serializedBadgeDelimiter = '__SHB__'
+const serializedBadgeSpaceDelimiter = '__SHB_SPACE__'
 
 export function isBadgeVariant(value: string): value is Variant {
   return variants.includes(value as Variant)
 }
 
 export function serializeBadge(variant: Variant, text: string) {
-  return [serializedBadgeDelimiter, variant, serializedBadgeDelimiter, text, serializedBadgeDelimiter].join('')
+  return [
+    serializedBadgeDelimiter,
+    variant,
+    serializedBadgeDelimiter,
+    text.replace(' ', serializedBadgeSpaceDelimiter),
+    serializedBadgeDelimiter,
+  ].join('')
 }
 
 export function deserializeBadge(value: string): Badge | undefined {
@@ -23,7 +30,7 @@ export function deserializeBadge(value: string): Badge | undefined {
 
   return {
     heading: value.replace(new RegExp(`${serializedBadgeDelimiter}.*${serializedBadgeDelimiter}`), ''),
-    text,
+    text: text.replace(serializedBadgeSpaceDelimiter, ' '),
     variant,
   }
 }

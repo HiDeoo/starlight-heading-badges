@@ -10,6 +10,12 @@ export class TestPage {
     { text: 'A duplicated heading', id: 'a-duplicated-heading-1' },
     { text: 'Variant badge', id: 'variant-badge' },
     { text: 'Non-ToC', id: 'non-toc' },
+    { text: 'Badge with spaces', id: 'badge-with-spaces' },
+  ]
+
+  expectedCustomHeadings = [
+    { text: 'Heading with custom ID', id: 'custom1' },
+    { text: 'Heading with custom ID and a badge', id: 'custom2' },
   ]
 
   constructor(public readonly page: Page) {}

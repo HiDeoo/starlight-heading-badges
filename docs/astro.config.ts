@@ -1,5 +1,6 @@
 import starlight from '@astrojs/starlight'
 import { defineConfig } from 'astro/config'
+import remarkCustomHeadingId from 'remark-custom-heading-id'
 import starlightHeadingBadges from 'starlight-heading-badges'
 
 export default defineConfig({
@@ -31,5 +32,8 @@ export default defineConfig({
       title: 'Starlight Heading Badges',
     }),
   ],
+  markdown: {
+    remarkPlugins: [remarkCustomHeadingId],
+  },
   site: 'https://starlight-heading-badges.vercel.app',
 })

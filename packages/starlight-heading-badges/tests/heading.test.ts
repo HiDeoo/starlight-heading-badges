@@ -44,4 +44,41 @@ for (const testType of TestTypes) {
     await expect(headingBadge).toBeVisible()
     await expect(headingBadge).toHaveText('POST')
   })
+
+  test(`adds a heading badge with spaces (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
+
+    const headingBadge = testPage.page
+      .getByRole('heading', { name: 'Badge with spaces' })
+      .locator('span[data-shb-badge-variant=default]')
+
+    await expect(headingBadge).toBeVisible()
+    await expect(headingBadge).toHaveText('A Badge')
+  })
+
+  test(`uses specified custom IDs (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
+
+    for (const [index, { text, id }] of testPage.expectedCustomHeadings.entries()) {
+      const heading = testPage.page
+        .locator('.sl-markdown-content')
+        .getByRole('heading')
+        // Skip non-custom headings.
+        .nth(7 + index)
+
+      expect(await heading.textContent()).toMatch(text)
+      expect(await heading.getAttribute('id')).toBe(id)
+    }
+  })
+
+  test(`adds a heading badge to a heading with a custom ID (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
+
+    const headingBadge = testPage.page
+      .getByRole('heading', { name: 'Heading with custom ID and a badge' })
+      .locator('span[data-shb-badge-variant=default]')
+
+    await expect(headingBadge).toBeVisible()
+    await expect(headingBadge).toHaveText('Custom')
+  })
 }
