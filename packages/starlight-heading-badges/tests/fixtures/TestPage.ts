@@ -13,6 +13,11 @@ export class TestPage {
     { text: 'Badge with spaces', id: 'badge-with-spaces' },
   ]
 
+  expectedCustomHeadings = [
+    { text: 'Heading with custom ID', id: 'custom1' },
+    { text: 'Heading with custom ID and a badge', id: 'custom2' },
+  ]
+
   constructor(public readonly page: Page) {}
 
   goto(type: TestType) {

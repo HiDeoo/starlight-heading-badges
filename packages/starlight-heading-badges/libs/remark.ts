@@ -31,7 +31,10 @@ export function remarkStarlightHeadingBadges() {
 
         parent.data ??= {}
         parent.data.hProperties ??= {}
-        parent.data.hProperties['id'] = slugger.slug(headingText)
+
+        if (!parent.data.hProperties['id']) {
+          parent.data.hProperties['id'] = slugger.slug(headingText)
+        }
       }
 
       if (node.type !== 'textDirective' || node.name !== BadgeDirectiveName) return CONTINUE
