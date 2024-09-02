@@ -1,6 +1,6 @@
 {
   "name": "starlight-heading-badges-docs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "description": "Starlight plugin to add badges to your Markdown and MDX headings.",
   "author": "HiDeoo <github@hideoo.dev> (https://hideoo.dev)",
