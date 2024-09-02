@@ -44,4 +44,15 @@ for (const testType of TestTypes) {
     await expect(headingBadge).toBeVisible()
     await expect(headingBadge).toHaveText('POST')
   })
+
+  test(`adds a heading badge with spaces (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
+
+    const headingBadge = testPage.page
+      .getByRole('heading', { name: 'Badge with spaces' })
+      .locator('span[data-shb-badge-variant=default]')
+
+    await expect(headingBadge).toBeVisible()
+    await expect(headingBadge).toHaveText('A Badge')
+  })
 }

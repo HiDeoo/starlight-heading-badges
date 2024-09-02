@@ -26,3 +26,7 @@ test
 #### Non-ToC :badge[POST]{variant=success}
 
 test
+
+## Badge with spaces :badge[A Badge]
+
+test
