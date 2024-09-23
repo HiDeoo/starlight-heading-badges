@@ -30,7 +30,7 @@
     "mdast-util-directive": "^3.0.0"
   },
   "peerDependencies": {
-    "@astrojs/starlight": ">=0.24.5"
+    "@astrojs/starlight": ">=0.28.0"
   },
   "engines": {
     "node": ">=18"
