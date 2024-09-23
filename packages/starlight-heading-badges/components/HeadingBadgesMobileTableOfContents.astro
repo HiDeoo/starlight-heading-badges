@@ -9,7 +9,7 @@ import type { Props } from '@astrojs/starlight/props'
 
 import TableOfContentsList from './TableOfContentsList.astro'
 
-const { labels, toc } = Astro.props
+const { toc } = Astro.props
 ---
 
 {
@@ -19,7 +19,7 @@ const { labels, toc } = Astro.props
         <details id="starlight__mobile-toc">
           <summary id="starlight__on-this-page--mobile" class="sl-flex">
             <div class="toggle sl-flex">
-              {labels['tableOfContents.onThisPage']}
+              {Astro.locals.t('tableOfContents.onThisPage')}
               <Icon name={'right-caret'} class="caret" size="1rem" />
             </div>
             <span class="display-current" />
