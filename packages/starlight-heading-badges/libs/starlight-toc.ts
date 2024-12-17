@@ -74,8 +74,7 @@ export class StarlightTOC extends HTMLElement {
     observe()
 
     // `requestIdleCallback` is not available in Safari.
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1))
+    const onIdle = globalThis.requestIdleCallback || ((cb) => setTimeout(cb, 1))
     let timeout: NodeJS.Timeout
     window.addEventListener('resize', () => {
       // Disable intersection observer while window is resizing.
