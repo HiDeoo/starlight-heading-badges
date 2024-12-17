@@ -157,11 +157,11 @@ const { toc } = Astro.props
         link.addEventListener('click', closeToC)
       }
       // Close the table of contents when a user clicks outside of it.
-      window.addEventListener('click', (e) => {
+      globalThis.addEventListener('click', (e) => {
         if (!details.contains(e.target as Node)) closeToC()
       })
       // Or when they press the escape key.
-      window.addEventListener('keydown', (e) => {
+      globalThis.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && details.open) {
           const hasFocus = details.contains(document.activeElement)
           closeToC()
