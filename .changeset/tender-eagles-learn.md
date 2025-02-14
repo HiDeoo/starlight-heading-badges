@@ -2,4 +2,4 @@
 'starlight-heading-badges': patch
 ---
 
-Fix potential build issue with monorepos where hoisting is disabled.
+Moves `mdast-util-directive` package to non-dev dependencies to prevent issues in monorepos with hoisting disabled.
