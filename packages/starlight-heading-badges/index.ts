@@ -7,7 +7,7 @@ export default function starlightHeadingBadgesPlugin(): StarlightPlugin {
   return {
     name: 'starlight-heading-badges-plugin',
     hooks: {
-      setup({ addIntegration, config: starlightConfig, logger, updateConfig }) {
+      'config:setup'({ addIntegration, config: starlightConfig, logger, updateConfig }) {
         addIntegration(starlightHeadingBadgesIntegration())
 
         updateConfig({

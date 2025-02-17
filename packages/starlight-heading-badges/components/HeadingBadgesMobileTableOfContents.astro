@@ -5,11 +5,10 @@
  */
 
 import { Icon } from '@astrojs/starlight/components'
-import type { Props } from '@astrojs/starlight/props'
 
 import TableOfContentsList from './TableOfContentsList.astro'
 
-const { toc } = Astro.props
+const { toc } = Astro.locals.starlightRoute
 ---
 
 {

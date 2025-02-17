@@ -12,6 +12,11 @@ By default, the badge will use the theme accent color of your site.
 
 The following example will render a "New" badge using the default theme accent color:
 
+import { Preview } from '@hideoo/starlight-plugins-docs-components'
+import Example from '../../components/Example.astro'
+
+<Preview>
+
 ```mdx
 ---
 // src/content/docs/example.md
@@ -23,17 +28,15 @@ title: My docs
 Welcome to my project!
 ```
 
-The code above generates the following tabs on the page:
-
-import Example from '../../components/Example.astro'
-
-<Example>
+<Example slot="preview">
 
 ### Example :badge[New]
 
 Welcome to my project!
 
 </Example>
+
+</Preview>
 
 ## Customize the badge
 
@@ -44,6 +47,8 @@ The accepted variants are available: `note` (blue), `tip` (purple), `danger` (re
 
 The following example will render a "POST" badge with a green background:
 
+<Preview>
+
 ```mdx
 ---
 // src/content/docs/example.md
@@ -55,12 +60,12 @@ title: My docs
 Welcome to my project!
 ```
 
-The code above generates the following tabs on the page:
-
-<Example>
+<Example slot="preview">
 
 ### Example :badge[POST]{variant=success}
 
 Welcome to my project!
 
 </Example>
+
+</Preview>

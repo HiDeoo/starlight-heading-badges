@@ -30,7 +30,7 @@
     "@types/mdast": "^4.0.4"
   },
   "peerDependencies": {
-    "@astrojs/starlight": ">=0.30.0"
+    "@astrojs/starlight": ">=0.32.0"
   },
   "engines": {
     "node": ">=18"
