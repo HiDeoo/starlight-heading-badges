@@ -1,5 +1,17 @@
 # starlight-heading-badges
 
+## 0.5.0
+
+### Minor Changes
+
+- [#12](https://github.com/HiDeoo/starlight-heading-badges/pull/12) [`508982f`](https://github.com/HiDeoo/starlight-heading-badges/commit/508982fc5050e700669382f195aaa420a4b59748) Thanks [@HiDeoo](https://github.com/HiDeoo)! - ⚠️ **BREAKING CHANGE:** The minimum supported version of Starlight is now version `0.32.0`.
+
+  Please use the `@astrojs/upgrade` command to upgrade your project:
+
+  ```sh
+  npx @astrojs/upgrade
+  ```
+
 ## 0.4.1
 
 ### Patch Changes
