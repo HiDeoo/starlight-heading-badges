@@ -10,7 +10,8 @@ export class TestPage {
     { text: 'A duplicated heading', id: 'a-duplicated-heading-1' },
     { text: 'Variant badge', id: 'variant-badge' },
     { text: 'Non-ToC', id: 'non-toc' },
-    { text: 'Badge with spaces', id: 'badge-with-spaces' },
+    { text: 'Badge with a space', id: 'badge-with-a-space' },
+    { text: 'Badge with multiple spaces', id: 'badge-with-multiple-spaces' },
   ]
 
   expectedCustomHeadings = [
