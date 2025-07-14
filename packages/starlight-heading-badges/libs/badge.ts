@@ -19,17 +19,28 @@ export function serializeBadge(variant: Variant, text: string) {
   ].join('')
 }
 
-export function deserializeBadge(value: string): Badge | undefined {
-  const serializeBadge = value.split(' ').pop()
-  if (!serializeBadge) return
+export function deserializeBadges(value: string): Badge[] {
+  const badges: Badge[] = []
 
-  const parts = serializeBadge.split(serializedBadgeDelimiter)
+  const parts = value.split(' ').reverse()
+
+  for (const part of parts) {
+    const badge = deserializeBadge(value, part)
+    if (!badge) break
+    badges.unshift(badge)
+  }
+
+  return badges
+}
+
+function deserializeBadge(heading: string, value: string): Badge | undefined {
+  const parts = value.split(serializedBadgeDelimiter)
   const [, variant, text] = parts
 
   if (!variant || !isBadgeVariant(variant) || !text) return undefined
 
   return {
-    heading: value.replace(new RegExp(`${serializedBadgeDelimiter}.*${serializedBadgeDelimiter}`), ''),
+    heading: heading.replace(new RegExp(`${serializedBadgeDelimiter}.*${serializedBadgeDelimiter}`), ''),
     text: text.replaceAll(serializedBadgeSpaceDelimiter, ' '),
     variant,
   }

@@ -35,6 +35,10 @@ test
 
 test
 
+## Multiple badges :badge[Badge 1] :badge[Badge 2]{variant=success}
+
+test
+
 ## Heading with custom ID {#custom1}
 
 test

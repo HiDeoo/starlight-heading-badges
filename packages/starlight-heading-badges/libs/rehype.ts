@@ -3,7 +3,7 @@ import 'mdast-util-directive'
 import type { ElementContent, Root } from 'hast'
 import { CONTINUE, SKIP, visit } from 'unist-util-visit'
 
-import { deserializeBadge, type Badge } from './badge'
+import { deserializeBadges, type Badge } from './badge'
 
 export function rehypeStarlightHeadingBadges() {
   return function transformer(tree: Root) {
@@ -11,14 +11,16 @@ export function rehypeStarlightHeadingBadges() {
       if (node.type === 'text') {
         if (index === undefined || !parent) return CONTINUE
 
-        const badge = deserializeBadge(node.value)
-        if (!badge) return SKIP
+        const badges = deserializeBadges(node.value)
+        if (badges.length === 0) return SKIP
 
-        if (badge.heading) {
-          node.value = badge.heading
-          parent.children.splice(index + 1, 0, createBadgeNode(badge))
-        } else {
-          parent.children.splice(index, 1, createBadgeNode(badge))
+        for (const badge of badges.reverse()) {
+          if (badge.heading) {
+            node.value = badge.heading
+            parent.children.splice(index + 1, 0, ...createBadgeNode(badge))
+          } else {
+            parent.children.splice(index, 1, ...createBadgeNode(badge))
+          }
         }
 
         return SKIP
@@ -29,14 +31,20 @@ export function rehypeStarlightHeadingBadges() {
   }
 }
 
-function createBadgeNode(badge: Badge): ElementContent {
-  return {
-    type: 'element',
-    tagName: 'span',
-    properties: {
-      'data-shb-badge': '',
-      'data-shb-badge-variant': badge.variant,
+function createBadgeNode(badge: Badge): ElementContent[] {
+  return [
+    {
+      type: 'element',
+      tagName: 'span',
+      properties: {
+        'data-shb-badge': '',
+        'data-shb-badge-variant': badge.variant,
+      },
+      children: [{ type: 'text', value: badge.text }],
     },
-    children: [{ type: 'text', value: badge.text }],
-  }
+    {
+      type: 'text',
+      value: ' ',
+    },
+  ]
 }

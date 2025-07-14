@@ -74,6 +74,20 @@ for (const testType of TestTypes) {
     await expect(badge).toHaveText('A Badge with Spaces')
   })
 
+  test(`adds multiple badge (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
+
+    const badges = testPage.page
+      .locator('starlight-toc')
+      .getByRole('link', { name: 'Multiple badges' })
+      .locator('.sl-badge')
+
+    for (let i = 0; i < 2; i++) {
+      await expect(badges.nth(i)).toBeVisible()
+      await expect(badges.nth(i)).toHaveText(`Badge ${i + 1}`)
+    }
+  })
+
   test(`uses specified custom IDs (${testType})`, async ({ testPage }) => {
     await testPage.goto(testType)
 

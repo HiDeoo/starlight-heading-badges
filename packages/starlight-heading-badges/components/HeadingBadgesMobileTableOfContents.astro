@@ -113,7 +113,7 @@ const { toc } = Astro.locals.starlightRoute
 </style>
 
 <script>
-  import { deserializeBadge } from '../libs/badge'
+  import { deserializeBadges } from '../libs/badge'
   import { StarlightTOC } from '../libs/starlight-toc'
 
   class MobileStarlightTOC extends StarlightTOC {
@@ -123,15 +123,18 @@ const { toc } = Astro.locals.starlightRoute
       if (display) {
         const heading = link.dataset['shbHeading']
         if (heading) {
-          const badge = deserializeBadge(heading)
-          if (badge) {
+          const badges = deserializeBadges(heading)
+          if (badges.length > 0) {
             display.textContent = ''
-            display.append(document.createTextNode(`${badge.heading} `))
-            const span = document.createElement('span')
-            span.textContent = badge.text
-            span.dataset['shbBadge'] = ''
-            span.dataset['shbBadgeVariant'] = badge.variant
-            display.append(span)
+            display.append(document.createTextNode(`${badges[0]?.heading} `))
+
+            for (const badge of badges) {
+              const span = document.createElement('span')
+              span.textContent = badge.text
+              span.dataset['shbBadge'] = ''
+              span.dataset['shbBadgeVariant'] = badge.variant
+              display.append(span)
+            }
 
             return
           }
