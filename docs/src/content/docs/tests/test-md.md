@@ -27,7 +27,11 @@ test
 
 test
 
-## Badge with spaces :badge[A Badge]
+## Badge with a space :badge[A Badge]
+
+test
+
+## Badge with multiple spaces :badge[A Badge with Spaces]
 
 test
 

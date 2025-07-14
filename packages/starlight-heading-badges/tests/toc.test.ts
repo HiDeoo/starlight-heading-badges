@@ -50,16 +50,28 @@ for (const testType of TestTypes) {
     expect(await badge.getAttribute('class')).toContain('caution')
   })
 
-  test(`adds a badge with spaces (${testType})`, async ({ testPage }) => {
+  test(`adds a badge with a space (${testType})`, async ({ testPage }) => {
     await testPage.goto(testType)
 
     const badge = testPage.page
       .locator('starlight-toc')
-      .getByRole('link', { name: 'Badge with spaces' })
+      .getByRole('link', { name: 'Badge with a space' })
       .locator('.sl-badge')
 
     await expect(badge).toBeVisible()
     await expect(badge).toHaveText('A Badge')
+  })
+
+  test(`adds a badge with multiple spaces (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
+
+    const badge = testPage.page
+      .locator('starlight-toc')
+      .getByRole('link', { name: 'Badge with multiple spaces' })
+      .locator('.sl-badge')
+
+    await expect(badge).toBeVisible()
+    await expect(badge).toHaveText('A Badge with Spaces')
   })
 
   test(`uses specified custom IDs (${testType})`, async ({ testPage }) => {
@@ -70,7 +82,7 @@ for (const testType of TestTypes) {
         .locator('starlight-toc')
         .getByRole('link')
         // Skip the "Overview" link and non-custom headings.
-        .nth(7 + index)
+        .nth(testPage.expectedHeadings.length + index)
 
       expect(await tocItem.textContent()).toMatch(text)
       expect(await tocItem.getAttribute('href')).toBe(`#${id}`)
