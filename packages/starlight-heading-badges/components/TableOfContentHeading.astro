@@ -1,7 +1,7 @@
 ---
 import { Badge } from '@astrojs/starlight/components'
 
-import { deserializeBadge } from '../libs/badge'
+import { deserializeBadges } from '../libs/badge'
 
 interface Props {
   text: string
@@ -9,14 +9,16 @@ interface Props {
 
 const { text } = Astro.props
 
-const badge = deserializeBadge(text)
+const badges = deserializeBadges(text)
 ---
 
 {
-  badge ? (
+  badges.length > 0 ? (
     <span class="shb-heading">
-      {badge.heading.trim()}&nbsp;
-      <Badge size="small" text={badge.text} variant={badge.variant} />
+      {badges[0]?.heading.trim()}&nbsp;
+      {badges.map((badge) => (
+        <Badge size="small" text={badge.text} variant={badge.variant} />
+      ))}
     </span>
   ) : (
     <span>{text}</span>

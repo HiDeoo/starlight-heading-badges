@@ -67,6 +67,20 @@ for (const testType of TestTypes) {
     await expect(headingBadge).toHaveText('A Badge with Spaces')
   })
 
+  test(`adds multiple heading badges (${testType})`, async ({ testPage }) => {
+    await testPage.goto(testType)
+
+    const headingBadges = testPage.page
+      .getByRole('heading', { name: 'Multiple badges' })
+      .locator('span[data-shb-badge-variant]')
+
+    for (let i = 0; i < 2; i++) {
+      await expect(headingBadges.nth(i)).toBeVisible()
+      await expect(headingBadges.nth(i)).toHaveText(`Badge ${i + 1}`)
+      expect(await headingBadges.nth(i).getAttribute('data-shb-badge-variant')).toBe(i === 0 ? 'default' : 'success')
+    }
+  })
+
   test(`uses specified custom IDs (${testType})`, async ({ testPage }) => {
     await testPage.goto(testType)
 

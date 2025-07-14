@@ -12,6 +12,7 @@ export class TestPage {
     { text: 'Non-ToC', id: 'non-toc' },
     { text: 'Badge with a space', id: 'badge-with-a-space' },
     { text: 'Badge with multiple spaces', id: 'badge-with-multiple-spaces' },
+    { text: 'Multiple badges', id: 'multiple-badges' },
   ]
 
   expectedCustomHeadings = [

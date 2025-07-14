@@ -69,3 +69,32 @@ Welcome to my project!
 </Example>
 
 </Preview>
+
+## Add multiple badges
+
+Multiple badges can be added to the same heading by using the [default syntax](#add-a-badge) multiple times and separating badges with a space.
+
+The following example will render a “POST” badge with a green background followed by a "New" badge using the default theme accent color:
+
+<Preview>
+
+```mdx
+---
+// src/content/docs/example.md
+title: My docs
+---
+
+### Example :badge[POST]{variant=success} :badge[New]
+
+Welcome to my project!
+```
+
+<Example slot="preview">
+
+### Example :badge[POST]{variant=success} :badge[New]
+
+Welcome to my project!
+
+</Example>
+
+</Preview>
