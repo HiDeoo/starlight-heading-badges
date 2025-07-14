@@ -1,5 +1,15 @@
 # starlight-heading-badges
 
+## 0.6.0
+
+### Minor Changes
+
+- [#18](https://github.com/HiDeoo/starlight-heading-badges/pull/18) [`261fda4`](https://github.com/HiDeoo/starlight-heading-badges/commit/261fda465d560146c55a2f148f36a28de384fdc8) Thanks [@HiDeoo](https://github.com/HiDeoo)! - Adds support for rendering multiple badges to the same heading.
+
+### Patch Changes
+
+- [#16](https://github.com/HiDeoo/starlight-heading-badges/pull/16) [`3a590c7`](https://github.com/HiDeoo/starlight-heading-badges/commit/3a590c7332c0bdaacd6109b5597b84cd5a415daf) Thanks [@HiDeoo](https://github.com/HiDeoo)! - Fixes an issue for heading badges with multiple spaces.
+
 ## 0.5.0
 
 ### Minor Changes
