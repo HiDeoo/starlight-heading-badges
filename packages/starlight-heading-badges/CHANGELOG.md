@@ -1,5 +1,11 @@
 # starlight-heading-badges
 
+## 0.6.1
+
+### Patch Changes
+
+- [#19](https://github.com/HiDeoo/starlight-heading-badges/pull/19) [`5b2c5aa`](https://github.com/HiDeoo/starlight-heading-badges/commit/5b2c5aa853cd8af228102e153db09abc049d3f58) Thanks [@HiDeoo](https://github.com/HiDeoo)! - Setups trusted publishing using OpenID Connect (OIDC) authentication — no code changes.
+
 ## 0.6.0
 
 ### Minor Changes
