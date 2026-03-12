@@ -44,10 +44,18 @@ export default defineConfig({
         },
         { label: 'Demo', link: '/demo/' },
       ],
-      social: {
-        blueSky: 'https://bsky.app/profile/hideoo.dev',
-        github: 'https://github.com/HiDeoo/starlight-heading-badges',
-      },
+      social: [
+        {
+          href: 'https://bsky.app/profile/hideoo.dev',
+          icon: 'blueSky',
+          label: 'Bluesky',
+        },
+        {
+          href: 'https://github.com/HiDeoo/starlight-heading-badges',
+          icon: 'github',
+          label: 'GitHub',
+        },
+      ],
       title: 'Starlight Heading Badges',
     }),
   ],

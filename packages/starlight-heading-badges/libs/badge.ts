@@ -22,7 +22,7 @@ export function serializeBadge(variant: Variant, text: string) {
 export function deserializeBadges(value: string): Badge[] {
   const badges: Badge[] = []
 
-  const parts = value.split(' ').reverse()
+  const parts = value.split(' ').toReversed()
 
   for (const part of parts) {
     const badge = deserializeBadge(value, part)

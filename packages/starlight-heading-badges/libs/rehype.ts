@@ -14,7 +14,7 @@ export function rehypeStarlightHeadingBadges() {
         const badges = deserializeBadges(node.value)
         if (badges.length === 0) return SKIP
 
-        for (const badge of badges.reverse()) {
+        for (const badge of badges.toReversed()) {
           if (badge.heading) {
             node.value = badge.heading
             parent.children.splice(index + 1, 0, ...createBadgeNode(badge))

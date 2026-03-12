@@ -32,15 +32,13 @@ export function remarkStarlightHeadingBadges() {
         parent.data ??= {}
         parent.data.hProperties ??= {}
 
-        if (!parent.data.hProperties['id']) {
-          parent.data.hProperties['id'] = slugger.slug(headingText)
-        }
+        parent.data.hProperties['id'] ??= slugger.slug(headingText)
       }
 
       if (node.type !== 'textDirective' || node.name !== BadgeDirectiveName) return CONTINUE
 
       const contentNode = node.children[0]
-      if (!contentNode || contentNode.type !== 'text' || contentNode.value.length === 0) return CONTINUE
+      if (contentNode?.type !== 'text' || contentNode.value.length === 0) return CONTINUE
 
       let variant: Variant = 'default'
 
