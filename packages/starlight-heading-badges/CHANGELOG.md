@@ -1,5 +1,15 @@
 # starlight-heading-badges
 
+## 0.7.0
+
+### Minor Changes
+
+- [#22](https://github.com/HiDeoo/starlight-heading-badges/pull/22) [`4a62df1`](https://github.com/HiDeoo/starlight-heading-badges/commit/4a62df184267cd83b98a1ae5770e7f7db121c5a6) Thanks [@HiDeoo](https://github.com/HiDeoo)! - Adds support for Astro v6, drops support for Astro v5.
+
+  ⚠️ **BREAKING CHANGE:** The minimum supported version of Starlight is now `0.38.0`.
+
+  Please follow the [upgrade guide](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.38.0) to update your project.
+
 ## 0.6.1
 
 ### Patch Changes
