@@ -1,5 +1,17 @@
 # starlight-heading-badges
 
+## 0.8.0
+
+### Minor Changes
+
+- [#28](https://github.com/HiDeoo/starlight-heading-badges/pull/28) [`b2f9564`](https://github.com/HiDeoo/starlight-heading-badges/commit/b2f956494708584ba6c574b33d1b82d3035dbc31) Thanks [@HiDeoo](https://github.com/HiDeoo)! - Adds support for Astro v7, drops support for Astro v6.
+
+  ⚠️ **BREAKING CHANGE:** The minimum supported version of Starlight is now `0.41.0`.
+
+  Please follow the [upgrade guide](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.41.0) to update your project.
+
+- [#28](https://github.com/HiDeoo/starlight-heading-badges/pull/28) [`b2f9564`](https://github.com/HiDeoo/starlight-heading-badges/commit/b2f956494708584ba6c574b33d1b82d3035dbc31) Thanks [@HiDeoo](https://github.com/HiDeoo)! - Adds support for the Sätteri Markdown processor.
+
 ## 0.7.0
 
 ### Minor Changes
