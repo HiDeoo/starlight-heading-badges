@@ -47,6 +47,12 @@ importers:
 
   docs:
     dependencies:
+      '@astrojs/markdown-remark':
+        specifier: ^7.2.0
+        version: 7.2.0
+      '@astrojs/markdown-satteri':
+        specifier: ^0.3.2
+        version: 0.3.2
       '@astrojs/starlight':
         specifier: ^0.41.1
         version: 0.41.1(@astrojs/markdown-remark@7.2.0)(astro@7.0.3(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.0)(yaml@2.9.0))(typescript@5.9.3)
@@ -71,6 +77,9 @@ importers:
       '@astrojs/markdown-remark':
         specifier: ^7.2.0
         version: 7.2.0
+      '@astrojs/markdown-satteri':
+        specifier: ^0.3.2
+        version: 0.3.2
       '@astrojs/starlight':
         specifier: '>=0.41.0'
         version: 0.41.1(@astrojs/markdown-remark@7.2.0)(astro@7.0.3(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@24.12.0)(yaml@2.9.0))(typescript@5.9.3)
@@ -80,6 +89,9 @@ importers:
       mdast-util-directive:
         specifier: ^3.1.0
         version: 3.1.0
+      satteri:
+        specifier: ^0.9.3
+        version: 0.9.3
       unist-util-visit:
         specifier: ^5.1.0
         version: 5.1.0
@@ -451,17 +463,11 @@ packages:
   '@emnapi/core@1.11.1':
     resolution: {integrity: sha512-RSvbQmHzdKzNsLYa/wHrbc3KN4sYLKAdPZxqiM2HATqv/SBk2/ENSHpvXGaLOMcsAyz0poEGqkmmKYG3OWiJEQ==}
 
-  '@emnapi/core@1.8.1':
-    resolution: {integrity: sha512-AvT9QFpxK0Zd8J0jopedNm+w/2fIzvtPKPjqyw9jwvBaReTTqPBk9Hixaz7KbjimP+QNz605/XnjFcDAL2pqBg==}
-
   '@emnapi/runtime@1.11.1':
     resolution: {integrity: sha512-vgj7R3y3Wgx24IQaGPA/R6YFXLHVMOZ0uVEyIQPaWs+rd1AzfEMXlAC22FYwO1XkKR6NPsq7mUandH8oIRdZFw==}
 
   '@emnapi/runtime@1.8.1':
     resolution: {integrity: sha512-mehfKSMWjjNol8659Z8KxEMrdSJDDot5SXMq00dM8BN4o+CLNXQ0xH2V7EchNHV4RmbZLmmPdEaXZc5H2FXmDg==}
-
-  '@emnapi/wasi-threads@1.1.0':
-    resolution: {integrity: sha512-WI0DdZ8xFSbgMjR1sFsKABJ/C5OnRrjT06JXbZKexJGrDuPTzZdDYfFlsgcCXCyf+suG5QU2e/y1Wo2V/OapLQ==}
 
   '@emnapi/wasi-threads@1.2.2':
     resolution: {integrity: sha512-c95qOXkHdydNKhscBTebqEC1CVAZpyqOfVfBzQ1qgzyl3gfeldUjIggDbIZgDKsHLgnsM+igH7TJ/eAasaVuMA==}
@@ -1128,9 +1134,6 @@ packages:
 
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
-
-  '@tybys/wasm-util@0.10.1':
-    resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
 
   '@tybys/wasm-util@0.10.3':
     resolution: {integrity: sha512-F3fo1MYrRJYL3zER0OUOmkutjr1Vp23m7OsSgp7nq4SP6OqX6C/56XFIPAl5bt3zaBRjmW7SGz3u/6LwFpYcOg==}
@@ -2342,9 +2345,6 @@ packages:
   hastscript@8.0.0:
     resolution: {integrity: sha512-dMOtzCEd3ABUeSIISmrETiKuyydk1w0pa+gE/uormcTpSYuaNJPbX1NU3JLyscSLjwAQM8bWMhhIlnCqnRvDTw==}
 
-  hastscript@9.0.0:
-    resolution: {integrity: sha512-jzaLBGavEDKHrc5EfFImKN7nZKKBdSLIdGvCwDZ9TfzbF2ffXiov8CKE445L2Z1Ek2t/m4SKQ2j6Ipv7NyUolw==}
-
   hastscript@9.0.1:
     resolution: {integrity: sha512-g7df9rMFX/SPi34tyGCyUBREQoKkapwdY/T04Qn9TDWfHhAYt4/I0gMVirzK5wEzeUqIjEB+LXC/ypb7Aqno5w==}
 
@@ -3426,9 +3426,6 @@ packages:
 
   retext-latin@4.0.0:
     resolution: {integrity: sha512-hv9woG7Fy0M9IlRQloq/N6atV82NxLGveq+3H2WOi79dtIYWN8OaxogDm77f8YnVXJL2VD3bbqowu5E3EMhBYA==}
-
-  retext-smartypants@6.1.0:
-    resolution: {integrity: sha512-LDPXg95346bqFZnDMHo0S7Rq5p64+B+N8Vz733+wPMDtwb9rCOs9LIdIEhrUOU+TAywX9St+ocQWJt8wrzivcQ==}
 
   retext-smartypants@6.2.0:
     resolution: {integrity: sha512-kk0jOU7+zGv//kfjXEBjdIryL1Acl4i9XNkHxtM7Tm5lFiCog576fjNC9hjoR7LTKQ0DsPWy09JummSsH1uqfQ==}
@@ -4701,23 +4698,12 @@ snapshots:
       tslib: 2.6.3
     optional: true
 
-  '@emnapi/core@1.8.1':
-    dependencies:
-      '@emnapi/wasi-threads': 1.1.0
-      tslib: 2.6.3
-    optional: true
-
   '@emnapi/runtime@1.11.1':
     dependencies:
       tslib: 2.6.3
     optional: true
 
   '@emnapi/runtime@1.8.1':
-    dependencies:
-      tslib: 2.6.3
-    optional: true
-
-  '@emnapi/wasi-threads@1.1.0':
     dependencies:
       tslib: 2.6.3
     optional: true
@@ -4874,7 +4860,7 @@ snapshots:
       hast-util-select: 6.0.2
       hast-util-to-html: 9.0.5
       hast-util-to-text: 4.0.2
-      hastscript: 9.0.0
+      hastscript: 9.0.1
       postcss: 8.5.8
       postcss-nested: 6.0.1(postcss@8.5.8)
       unist-util-visit: 5.1.0
@@ -5112,9 +5098,9 @@ snapshots:
 
   '@napi-rs/wasm-runtime@0.2.12':
     dependencies:
-      '@emnapi/core': 1.8.1
-      '@emnapi/runtime': 1.8.1
-      '@tybys/wasm-util': 0.10.1
+      '@emnapi/core': 1.11.1
+      '@emnapi/runtime': 1.11.1
+      '@tybys/wasm-util': 0.10.3
     optional: true
 
   '@napi-rs/wasm-runtime@1.1.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)':
@@ -5266,11 +5252,6 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@tybys/wasm-util@0.10.1':
-    dependencies:
-      tslib: 2.6.3
-    optional: true
-
   '@tybys/wasm-util@0.10.3':
     dependencies:
       tslib: 2.6.3
@@ -5308,7 +5289,7 @@ snapshots:
 
   '@types/nlcst@2.0.3':
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
 
   '@types/node@12.20.55': {}
 
@@ -6568,7 +6549,7 @@ snapshots:
   estree-util-visit@2.0.0:
     dependencies:
       '@types/estree-jsx': 1.0.5
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
 
   estree-walker@2.0.2: {}
 
@@ -6826,7 +6807,7 @@ snapshots:
   hast-util-from-parse5@8.0.1:
     dependencies:
       '@types/hast': 3.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       devlop: 1.1.0
       hastscript: 8.0.0
       property-information: 6.5.0
@@ -6869,7 +6850,7 @@ snapshots:
   hast-util-raw@9.0.4:
     dependencies:
       '@types/hast': 3.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       '@ungap/structured-clone': 1.2.0
       hast-util-from-parse5: 8.0.1
       hast-util-to-parse5: 8.0.0
@@ -6885,7 +6866,7 @@ snapshots:
   hast-util-select@6.0.2:
     dependencies:
       '@types/hast': 3.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       bcp-47-match: 2.0.3
       comma-separated-tokens: 2.0.3
       css-selector-parser: 3.0.5
@@ -6943,7 +6924,7 @@ snapshots:
   hast-util-to-html@9.0.5:
     dependencies:
       '@types/hast': 3.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       ccount: 2.0.1
       comma-separated-tokens: 2.0.3
       hast-util-whitespace: 3.0.0
@@ -6958,7 +6939,7 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.8
       '@types/hast': 3.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       comma-separated-tokens: 2.0.3
       devlop: 1.1.0
       estree-util-is-identifier-name: 3.0.0
@@ -6995,7 +6976,7 @@ snapshots:
   hast-util-to-text@4.0.2:
     dependencies:
       '@types/hast': 3.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       hast-util-is-element: 3.0.0
       unist-util-find-after: 5.0.0
 
@@ -7004,14 +6985,6 @@ snapshots:
       '@types/hast': 3.0.4
 
   hastscript@8.0.0:
-    dependencies:
-      '@types/hast': 3.0.4
-      comma-separated-tokens: 2.0.3
-      hast-util-parse-selector: 4.0.0
-      property-information: 6.5.0
-      space-separated-tokens: 2.0.2
-
-  hastscript@9.0.0:
     dependencies:
       '@types/hast': 3.0.4
       comma-separated-tokens: 2.0.3
@@ -7391,7 +7364,7 @@ snapshots:
   mdast-util-definitions@6.0.0:
     dependencies:
       '@types/mdast': 4.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       unist-util-visit: 5.1.0
 
   mdast-util-directive@3.1.0:
@@ -7445,7 +7418,7 @@ snapshots:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.1
-      mdast-util-to-markdown: 2.1.0
+      mdast-util-to-markdown: 2.1.2
       micromark-util-normalize-identifier: 2.0.0
     transitivePeerDependencies:
       - supports-color
@@ -7454,7 +7427,7 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.4
       mdast-util-from-markdown: 2.0.1
-      mdast-util-to-markdown: 2.1.0
+      mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
@@ -7464,7 +7437,7 @@ snapshots:
       devlop: 1.1.0
       markdown-table: 3.0.3
       mdast-util-from-markdown: 2.0.1
-      mdast-util-to-markdown: 2.1.0
+      mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
@@ -7473,7 +7446,7 @@ snapshots:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.1
-      mdast-util-to-markdown: 2.1.0
+      mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
@@ -7485,7 +7458,7 @@ snapshots:
       mdast-util-gfm-strikethrough: 2.0.0
       mdast-util-gfm-table: 2.0.0
       mdast-util-gfm-task-list-item: 2.0.0
-      mdast-util-to-markdown: 2.1.0
+      mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
@@ -7496,7 +7469,7 @@ snapshots:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.1
-      mdast-util-to-markdown: 2.1.0
+      mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
@@ -7505,11 +7478,11 @@ snapshots:
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
       '@types/mdast': 4.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       ccount: 2.0.1
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.1
-      mdast-util-to-markdown: 2.1.0
+      mdast-util-to-markdown: 2.1.2
       parse-entities: 4.0.1
       stringify-entities: 4.0.4
       unist-util-remove-position: 5.0.0
@@ -7524,7 +7497,7 @@ snapshots:
       mdast-util-mdx-expression: 2.0.0
       mdast-util-mdx-jsx: 3.1.2
       mdast-util-mdxjs-esm: 2.0.1
-      mdast-util-to-markdown: 2.1.0
+      mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
@@ -7535,7 +7508,7 @@ snapshots:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.1
-      mdast-util-to-markdown: 2.1.0
+      mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
@@ -7811,7 +7784,7 @@ snapshots:
     dependencies:
       '@types/acorn': 4.0.6
       '@types/estree': 1.0.8
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       devlop: 1.1.0
       estree-util-visit: 2.0.0
       micromark-util-symbol: 2.0.0
@@ -8065,7 +8038,7 @@ snapshots:
   parse-latin@7.0.0:
     dependencies:
       '@types/nlcst': 2.0.3
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       nlcst-to-string: 4.0.0
       unist-util-modify-children: 4.0.0
       unist-util-visit-children: 3.0.0
@@ -8360,14 +8333,14 @@ snapshots:
   remark-smartypants@3.0.2:
     dependencies:
       retext: 9.0.0
-      retext-smartypants: 6.1.0
+      retext-smartypants: 6.2.0
       unified: 11.0.5
       unist-util-visit: 5.1.0
 
   remark-stringify@11.0.0:
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-to-markdown: 2.1.0
+      mdast-util-to-markdown: 2.1.2
       unified: 11.0.5
 
   request-light@0.5.8: {}
@@ -8395,12 +8368,6 @@ snapshots:
       '@types/nlcst': 2.0.3
       parse-latin: 7.0.0
       unified: 11.0.5
-
-  retext-smartypants@6.1.0:
-    dependencies:
-      '@types/nlcst': 2.0.3
-      nlcst-to-string: 4.0.0
-      unist-util-visit: 5.1.0
 
   retext-smartypants@6.2.0:
     dependencies:
@@ -8856,7 +8823,7 @@ snapshots:
 
   unified@11.0.5:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       bail: 2.0.2
       devlop: 1.1.0
       extend: 3.0.2
@@ -8872,7 +8839,7 @@ snapshots:
 
   unist-util-find-after@5.0.0:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       unist-util-is: 6.0.0
 
   unist-util-is@6.0.0:
@@ -8881,33 +8848,33 @@ snapshots:
 
   unist-util-modify-children@4.0.0:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       array-iterate: 2.0.1
 
   unist-util-position-from-estree@2.0.0:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
 
   unist-util-position@5.0.0:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
 
   unist-util-remove-position@5.0.0:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       unist-util-visit: 5.1.0
 
   unist-util-stringify-position@4.0.0:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
 
   unist-util-visit-children@3.0.0:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
 
   unist-util-visit-parents@6.0.2:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       unist-util-is: 6.0.0
 
   unist-util-visit@5.1.0:
@@ -8969,17 +8936,17 @@ snapshots:
 
   vfile-location@5.0.2:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       vfile: 6.0.3
 
   vfile-message@4.0.2:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       unist-util-stringify-position: 4.0.0
 
   vfile@6.0.3:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
   vite@8.1.0(@types/node@22.19.15)(esbuild@0.28.1)(yaml@2.9.0):

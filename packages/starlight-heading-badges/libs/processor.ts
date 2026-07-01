@@ -4,12 +4,12 @@ import type { AstroConfig } from 'astro'
 import { throwPluginError } from './error'
 import { rehypeStarlightHeadingBadges } from './rehype'
 import { remarkStarlightHeadingBadges } from './remark'
-// import { satteriStarlightLinksValidator } from './satteri'
+import { satteriHastStarlightHeadingBadgesPlugins, satteriMdastStarlightHeadingBadges } from './satteri'
 
 export function applyMarkdownPlugin(processor: MarkdownProcessor) {
   if (isSatteriProcessor(processor)) {
-    // TODO(HiDeoo)
-    // processor.options.hastPlugins.push(satteriStarlightLinksValidator(validationConfig))
+    processor.options.mdastPlugins.push(satteriMdastStarlightHeadingBadges())
+    processor.options.hastPlugins.unshift(...satteriHastStarlightHeadingBadgesPlugins)
   } else if (isUnifiedProcessor(processor)) {
     processor.options.remarkPlugins.push([remarkStarlightHeadingBadges])
     processor.options.rehypePlugins.push([rehypeHeadingIds], [rehypeStarlightHeadingBadges])
@@ -30,7 +30,7 @@ function isSatteriProcessor(processor: unknown): processor is SatteriMarkdownPro
 
 function isUnifiedProcessor(processor: unknown): processor is UnifiedMarkdownProcessor {
   if (typeof processor !== 'object' || processor === null) return false
-  const candidate = processor as { name?: unknown; options?: { rehypePlugins?: unknown; remarkPlugins: unknown[] } }
+  const candidate = processor as { name?: unknown; options?: { rehypePlugins?: unknown; remarkPlugins?: unknown[] } }
   return (
     candidate.name === 'unified' &&
     Array.isArray(candidate.options?.rehypePlugins) &&
@@ -42,7 +42,7 @@ type MarkdownProcessor = NonNullable<AstroConfig['markdown']['processor']>
 
 interface SatteriMarkdownProcessor {
   name: string
-  options: { hastPlugins: unknown[]; mdastPlugins?: unknown[] }
+  options: { hastPlugins: unknown[]; mdastPlugins: unknown[] }
 }
 
 interface UnifiedMarkdownProcessor {

@@ -15,14 +15,18 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "test": "playwright install --with-deps chromium && playwright test",
-    "test:ci": "playwright test",
+    "test": "playwright install --with-deps chromium && pnpm test:ci",
+    "test:satteri": "STARLIGHT_HEADING_BADGES_TEST_MARKDOWN_PROCESSOR=satteri playwright test",
+    "test:unified": "STARLIGHT_HEADING_BADGES_TEST_MARKDOWN_PROCESSOR=unified playwright test",
+    "test:ci": "pnpm test:satteri && pnpm test:unified",
     "lint": "eslint . --cache --max-warnings=0"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.2.0",
+    "@astrojs/markdown-satteri": "^0.3.2",
     "github-slugger": "^2.0.0",
     "mdast-util-directive": "^3.1.0",
+    "satteri": "^0.9.3",
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {

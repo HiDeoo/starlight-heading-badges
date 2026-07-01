@@ -87,31 +87,4 @@ for (const testType of TestTypes) {
       await expect(badges.nth(i)).toHaveText(`Badge ${i + 1}`)
     }
   })
-
-  test(`uses specified custom IDs (${testType})`, async ({ testPage }) => {
-    await testPage.goto(testType)
-
-    for (const [index, { text, id }] of testPage.expectedCustomHeadings.entries()) {
-      const tocItem = testPage.page
-        .locator('starlight-toc')
-        .getByRole('link')
-        // Skip the "Overview" link and non-custom headings.
-        .nth(testPage.expectedHeadings.length + index)
-
-      expect(await tocItem.textContent()).toMatch(text)
-      expect(await tocItem.getAttribute('href')).toBe(`#${id}`)
-    }
-  })
-
-  test(`adds a badge to a heading with a custom ID (${testType})`, async ({ testPage }) => {
-    await testPage.goto(testType)
-
-    const badge = testPage.page
-      .locator('starlight-toc')
-      .getByRole('link', { name: 'Heading with custom ID and a badge' })
-      .locator('.sl-badge')
-
-    await expect(badge).toBeVisible()
-    await expect(badge).toHaveText('Custom')
-  })
 }

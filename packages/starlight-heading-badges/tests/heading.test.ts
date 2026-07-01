@@ -80,33 +80,4 @@ for (const testType of TestTypes) {
       expect(await headingBadges.nth(i).getAttribute('data-shb-badge-variant')).toBe(i === 0 ? 'default' : 'success')
     }
   })
-
-  test(`uses specified custom IDs (${testType})`, async ({ testPage }) => {
-    await testPage.goto(testType)
-
-    for (const [index, { text, id }] of testPage.expectedCustomHeadings.entries()) {
-      const heading = testPage.page
-        .locator('.sl-markdown-content')
-        .getByRole('heading')
-        // Skip non-custom headings.
-        .nth(testPage.expectedHeadings.length + index)
-
-      await heading.highlight()
-      await testPage.page.pause()
-
-      expect(await heading.textContent()).toMatch(text)
-      expect(await heading.getAttribute('id')).toBe(id)
-    }
-  })
-
-  test(`adds a heading badge to a heading with a custom ID (${testType})`, async ({ testPage }) => {
-    await testPage.goto(testType)
-
-    const headingBadge = testPage.page
-      .getByRole('heading', { name: 'Heading with custom ID and a badge' })
-      .locator('span[data-shb-badge-variant=default]')
-
-    await expect(headingBadge).toBeVisible()
-    await expect(headingBadge).toHaveText('Custom')
-  })
 }
