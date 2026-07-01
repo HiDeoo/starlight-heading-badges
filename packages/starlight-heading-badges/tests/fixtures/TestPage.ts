@@ -22,7 +22,7 @@ export class TestPage {
 
   constructor(public readonly page: Page) {}
 
-  goto(type: TestType) {
-    return this.page.goto(`/tests/test-${type}/`)
+  goto(type: TestType, category?: 'custom-ids') {
+    return this.page.goto(`/tests/test-${type}${category ? `-${category}` : ''}/`)
   }
 }

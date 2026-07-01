@@ -1,3 +1,5 @@
+import { unified } from '@astrojs/markdown-remark'
+import { satteri } from '@astrojs/markdown-satteri'
 import starlight from '@astrojs/starlight'
 import { defineConfig } from 'astro/config'
 import remarkCustomHeadingId from 'remark-custom-heading-id'
@@ -60,7 +62,13 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkCustomHeadingId],
+    processor:
+      process.env['STARLIGHT_HEADING_BADGES_TEST_MARKDOWN_PROCESSOR'] === 'unified'
+        ? unified({ remarkPlugins: [remarkCustomHeadingId] })
+        : // We currently disable the heading attributes feature in Sätteri due to a few issues with directives:
+          // https://github.com/bruits/satteri/issues/134
+          // https://github.com/bruits/satteri/issues/135
+          satteri({ features: { headingAttributes: false } }),
   },
   site,
 })
