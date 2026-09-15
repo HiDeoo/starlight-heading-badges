@@ -173,7 +173,8 @@ function createBadgeNode(badge: Badge): ElementContent[] {
 }
 
 function lockAstroHeadings(data: SatteriData) {
-  if (data[astroHeadingsLock]) return
+  const isLocked = data[astroHeadingsLock]
+  if (isLocked) return
 
   const astroData = data['astro']
   if (!isAstroData(astroData)) return

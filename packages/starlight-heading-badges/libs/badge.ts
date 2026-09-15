@@ -14,7 +14,7 @@ export function serializeBadge(variant: Variant, text: string) {
     serializedBadgeDelimiter,
     variant,
     serializedBadgeDelimiter,
-    text.replaceAll(' ', serializedBadgeSpaceDelimiter),
+    text.replaceAll(' ', () => serializedBadgeSpaceDelimiter),
     serializedBadgeDelimiter,
   ].join('')
 }
@@ -37,7 +37,7 @@ function deserializeBadge(heading: string, value: string): Badge | undefined {
   const parts = value.split(serializedBadgeDelimiter)
   const [, variant, text] = parts
 
-  if (!variant || !isBadgeVariant(variant) || !text) return undefined
+  if (!variant || !text || !isBadgeVariant(variant)) return undefined
 
   return {
     heading: heading.replace(new RegExp(`${serializedBadgeDelimiter}.*${serializedBadgeDelimiter}`), ''),
