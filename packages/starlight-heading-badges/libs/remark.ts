@@ -51,10 +51,10 @@ export function remarkStarlightHeadingBadges() {
       }
 
       if (parent.children.length !== index + 1) {
-        parent.children.splice(parent.children.length, 0, { type: 'text', value: ' ' })
+        parent.children.push({ type: 'text', value: ' ' })
       }
       parent.children.splice(index, 1)
-      parent.children.splice(parent.children.length, 0, {
+      parent.children.push({
         type: 'text',
         value: serializeBadge(variant, contentNode.value),
       })

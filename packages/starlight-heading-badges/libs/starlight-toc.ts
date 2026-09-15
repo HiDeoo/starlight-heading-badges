@@ -7,8 +7,8 @@ const PAGE_TITLE_ID = '_top'
 
 export class StarlightTOC extends HTMLElement {
   private _current = this.querySelector<HTMLAnchorElement>('a[aria-current="true"]')
-  private minH = Number.parseInt(this.dataset['minH'] ?? '2', 10)
-  private maxH = Number.parseInt(this.dataset['maxH'] ?? '3', 10)
+  private minH = Math.trunc(Number(this.dataset['minH'] ?? '2'))
+  private maxH = Math.trunc(Number(this.dataset['maxH'] ?? '3'))
 
   protected set current(link: HTMLAnchorElement) {
     if (link === this._current) return
@@ -92,7 +92,7 @@ export class StarlightTOC extends HTMLElement {
       // Check the heading level is within the user-configured limits for the ToC
       const level = el.tagName[1]
       if (level) {
-        const int = Number.parseInt(level, 10)
+        const int = Math.trunc(Number(level))
         if (int >= this.minH && int <= this.maxH) return true
       }
     }

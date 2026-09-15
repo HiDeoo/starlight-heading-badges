@@ -9,7 +9,8 @@ export function overrideComponents(
   const components = { ...starlightConfig.components }
 
   for (const { name, fallback } of overrides) {
-    if (starlightConfig.components?.[name]) {
+    const override = starlightConfig.components?.[name]
+    if (override) {
       logger.warn(`A \`<${name}>\` component override is already defined in your Starlight configuration.`)
       logger.warn(
         `To use \`starlight-heading-badges\`, either remove this override or manually render the content from \`starlight-heading-badges/components/${fallback}.astro\`.`,
